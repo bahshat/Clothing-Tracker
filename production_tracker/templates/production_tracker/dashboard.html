@@ -121,8 +121,8 @@
                     data: [pendingOrders, inProgressOrders, completedOrders],
                     backgroundColor: [
                         '#cb4b16', // Terracotta
-                        '#268bd2', // Bright Blue
-                        '#2aa198'  // Teal
+                        '#4682B4', // Steel Blue
+                        '#B8860B'  // Dark Gold
                     ],
                     hoverOffset: 4
                 }]
@@ -133,12 +133,12 @@
                     title: {
                         display: true,
                         text: 'Order Status Distribution',
-                        color: '#073642'
+                        color: '#36454F' // text-dark
                     },
                     legend: {
                         position: 'bottom',
                         labels: {
-                            color: '#586e75'
+                            color: '#36454F' // text-dark
                         }
                     }
                 }
@@ -154,8 +154,8 @@
                 datasets: [{
                     data: [paidInvoices, unpaidInvoices],
                     backgroundColor: [
-                        '#2aa198', // Teal
-                        '#dc322f'  // Red
+                        '#B8860B', // Dark Gold
+                        '#8B0000'  // Rich Red
                     ],
                     hoverOffset: 4
                 }]
@@ -166,12 +166,12 @@
                     title: {
                         display: true,
                         text: 'Invoice Status Distribution',
-                        color: '#073642'
+                        color: '#36454F' // text-dark
                     },
                     legend: {
                         position: 'bottom',
                         labels: {
-                            color: '#586e75'
+                            color: '#36454F' // text-dark
                         }
                     }
                 }

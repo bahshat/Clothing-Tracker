@@ -4,30 +4,32 @@
 <head>
     <title>Clothing Factory</title>
     <link rel="stylesheet" href="{% static 'production_tracker/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
             <h2>Clothing Factory</h2>
             <ul>
-                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                <li><a href="{% url 'order_list' %}">Orders</a></li>
-                <li><a href="{% url 'order_new' %}">New Order</a></li>
-                <li><a href="{% url 'individual_list' %}">Individuals</a></li>
-                <li><a href="{% url 'individual_new' %}">New Individual</a></li>
-                <li><a href="{% url 'measurement_list' %}">Measurements</a></li>
-                <li><a href="{% url 'measurement_new' %}">New Measurement</a></li>
-                <li><a href="{% url 'vendor_list' %}">Vendors</a></li>
-                <li><a href="{% url 'vendorrole_list' %}">Vendor Roles</a></li>
-                <li><a href="{% url 'pipelinestage_list' %}">Pipeline Stages</a></li>
-                <li><a href="{% url 'invoice_list' %}">Invoices</a></li>
+                <li><a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="{% url 'order_list' %}"><i class="fas fa-clipboard-list"></i> Orders</a></li>
+                <li><a href="{% url 'order_new' %}"><i class="fas fa-plus-circle"></i> New Order</a></li>
+                <li><a href="{% url 'individual_list' %}"><i class="fas fa-users"></i> Individuals</a></li>
+                <li><a href="{% url 'individual_new' %}"><i class="fas fa-user-plus"></i> New Individual</a></li>
+                <li><a href="{% url 'measurement_list' %}"><i class="fas fa-ruler-combined"></i> Measurements</a></li>
+                <li><a href="{% url 'measurement_new' %}"><i class="fas fa-plus-square"></i> New Measurement</a></li>
+                <li><a href="{% url 'vendor_list' %}"><i class="fas fa-industry"></i> Vendors</a></li>
+                <li><a href="{% url 'vendorrole_list' %}"><i class="fas fa-user-tag"></i> Vendor Roles</a></li>
+                <li><a href="{% url 'pipelinestage_list' %}"><i class="fas fa-project-diagram"></i> Pipeline Stages</a></li>
+                <li><a href="{% url 'invoice_list' %}"><i class="fas fa-file-invoice-dollar"></i> Invoices</a></li>
             </ul>
-            <div class="auth-links" style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #073642;">
+            <div class="auth-links">
                 {% if user.is_authenticated %}
-                    <p style="color: #eee8d5; text-align: center;">Welcome, {{ user.username }}!</p>
-                    <a href="{% url 'logout' %}" style="display: block; text-align: center; color: #dc322f; text-decoration: none; padding: 10px; border: 1px solid #dc322f; border-radius: 5px;">Logout</a>
+                    <p>Welcome, {{ user.username }}!</p>
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 {% else %}
-                    <a href="{% url 'login' %}" style="display: block; text-align: center; color: #2aa198; text-decoration: none; padding: 10px; border: 1px solid #2aa198; border-radius: 5px;">Login</a>
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
                 {% endif %}
             </div>
         </aside>
