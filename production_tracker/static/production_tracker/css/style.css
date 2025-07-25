@@ -1,35 +1,44 @@
+/* General Mughal Theme */
 body {
-    font-family: "Garamond", "serif";
-    background-color: #fdf6e3; /* Parchment-like background */
-    color: #586e75; /* Muted text color */
+    font-family: "Georgia", serif; /* More traditional serif font */
+    background-color: #F8F4E3; /* Lighter, warmer cream background */
+    color: #36454F; /* Darker, rich text color */
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.8; /* Increased line height for elegance */
+    font-size: 16px;
 }
 
+/* Container and Layout */
 .container {
     display: flex;
     min-height: 100vh;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); /* Subtle overall shadow */
 }
 
+/* Sidebar Styling */
 .sidebar {
-    width: 280px;
-    background-color: #002b36; /* Deep blue, reminiscent of lapis lazuli */
-    color: #eee8d5; /* Light cream text */
-    padding: 30px 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    width: 300px; /* Slightly wider sidebar */
+    background: linear-gradient(to bottom, #0A192F, #061424); /* Deep blue gradient */
+    color: #E0D8C0; /* Soft gold/cream for text */
+    padding: 40px 25px;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
     position: sticky;
     top: 0;
     height: 100vh;
     overflow-y: auto;
+    border-right: 2px solid #B8860B; /* Gold border */
 }
 
 .sidebar h2 {
-    color: #b58900; /* Gold accent */
+    color: #FFD700; /* Bright gold for title */
     text-align: center;
-    margin-bottom: 40px;
-    font-size: 1.8em;
-    border-bottom: 2px solid #b58900;
-    padding-bottom: 10px;
+    margin-bottom: 50px;
+    font-size: 2.2em; /* Larger title */
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* More ornate font */
+    border-bottom: 3px double #FFD700; /* Double gold border */
+    padding-bottom: 15px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .sidebar ul {
@@ -38,142 +47,278 @@ body {
 }
 
 .sidebar ul li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .sidebar ul li a {
     display: block;
-    color: #eee8d5;
-    padding: 12px 20px;
+    color: #E0D8C0;
+    padding: 15px 25px;
     text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 5px;
-    font-size: 1.1em;
+    transition: background-color 0.4s ease, color 0.4s ease, transform 0.2s ease;
+    border-radius: 8px; /* Slightly rounded corners */
+    font-size: 1.15em;
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Subtle gold border */
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 215, 0, 0.1); /* Gold overlay on hover */
+    transition: left 0.4s ease;
+    z-index: 0;
+}
+
+.sidebar ul li a:hover::before {
+    left: 0;
 }
 
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
-    background-color: #073642; /* Slightly lighter blue */
-    color: #fdf6e3;
+    background-color: rgba(255, 215, 0, 0.15); /* Gold tint on hover */
+    color: #FFD700; /* Gold text on hover */
+    transform: translateX(5px); /* Slight movement */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* Gold glow */
 }
 
+/* Main Content Area */
 .main-content {
     flex-grow: 1;
-    padding: 40px 60px;
-    background-color: #fdf6e3;
+    padding: 50px 80px;
+    background-color: #F8F4E3; /* Consistent background */
+    position: relative;
+    z-index: 1;
 }
 
+/* Headings */
 h1, h2, h3 {
-    color: #cb4b16; /* Terracotta, for warmth */
-    margin-bottom: 25px;
-    border-bottom: 1px solid #eee8d5;
-    padding-bottom: 10px;
+    color: #8B0000; /* Deep rich red */
+    margin-bottom: 30px;
+    border-bottom: 2px solid #B8860B; /* Gold border */
+    padding-bottom: 15px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    letter-spacing: 1px;
 }
 
+/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-top: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15); /* Deeper shadow */
+    border: 1px solid #B8860B; /* Gold table border */
 }
 
 th, td {
-    padding: 15px;
-    border: 1px solid #eee8d5; /* Light cream border */
+    padding: 18px;
+    border: 1px solid #E0D8C0; /* Soft cream border */
     text-align: left;
 }
 
 th {
-    background-color: #073642; /* Lighter blue for headers */
-    color: #eee8d5;
-    font-weight: normal;
+    background-color: #0A192F; /* Deep blue header */
+    color: #FFD700; /* Gold text */
+    font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    font-size: 1.05em;
 }
 
 tr:nth-child(even) {
-    background-color: #fdfaf2; /* Slightly different background for even rows */
+    background-color: #F0EAD6; /* Slightly darker cream for even rows */
 }
 
+/* Links */
 a {
-    color: #268bd2; /* Bright blue for links */
+    color: #4682B4; /* Steel blue for general links */
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #cb4b16;
+    color: #8B0000; /* Deep red on hover */
 }
 
+/* Buttons and Forms */
 button,
 input[type="submit"] {
-    background-color: #b58900; /* Gold */
+    background-color: #B8860B; /* Gold button */
     color: white;
     border: none;
-    padding: 12px 25px;
+    padding: 15px 30px;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Deeper shadow */
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 button:hover,
 input[type="submit"]:hover {
-    background-color: #cb4b16; /* Terracotta on hover */
-    transform: translateY(-2px);
+    background-color: #8B0000; /* Deep red on hover */
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 form p {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 form label {
     display: block;
-    margin-bottom: 5px;
-    color: #073642;
+    margin-bottom: 8px;
+    color: #0A192F; /* Dark blue label */
     font-weight: bold;
+    font-size: 1.05em;
 }
 
 form input[type="text"],
 form input[type="email"],
 form input[type="number"],
+form input[type="date"],
 form select,
 form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 12px;
+    border: 1px solid #B8860B; /* Gold border for inputs */
+    border-radius: 5px;
     box-sizing: border-box;
     font-size: 1em;
-    background-color: #fff;
+    background-color: #FFFBF0; /* Lighter input background */
+    color: #36454F;
 }
 
 form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="number"]:focus,
+form input[type="date"]:focus,
 form select:focus,
 form textarea:focus {
-    border-color: #268bd2;
+    border-color: #8B0000; /* Deep red on focus */
     outline: none;
-    box-shadow: 0 0 5px rgba(38, 139, 210, 0.5);
+    box-shadow: 0 0 10px rgba(139, 0, 0, 0.3); /* Red glow on focus */
 }
 
+/* Filter Buttons */
 .filter-buttons {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .filter-buttons .button {
     display: inline-block;
-    background-color: #268bd2; /* Bright blue */
+    background-color: #4682B4; /* Steel blue */
     color: white;
-    padding: 8px 15px;
+    padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
-    margin-right: 10px;
-    transition: background-color 0.3s;
+    margin: 0 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .filter-buttons .button:hover {
-    background-color: #2aa198; /* Teal */
+    background-color: #0A192F; /* Dark blue on hover */
+    transform: translateY(-2px);
+}
+
+/* Dashboard Specifics */
+.dashboard-section {
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: #FFFBF0; /* Lighter background for sections */
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* More prominent shadow */
+    border: 1px solid #E0D8C0; /* Soft cream border */
+}
+
+.analytics-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.card {
+    background-color: #F0EAD6; /* Slightly darker cream for cards */
+    border: 1px solid #B8860B; /* Gold border */
+    border-radius: 10px;
+    padding: 25px;
+    flex: 1 1 calc(30% - 25px); /* Adjust for spacing */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Deeper shadow */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+    color: #0A192F; /* Dark blue heading */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.card p {
+    font-size: 2.5em; /* Larger numbers */
+    font-weight: bold;
+    color: #B8860B; /* Gold for numbers */
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.chart-container {
+    position: relative;
+    width: 90%; /* Wider charts */
+    max-width: 800px; /* Max width for charts */
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #FFFBF0;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border: 1px solid #E0D8C0;
+}
+
+/* Auth Links in Sidebar */
+.auth-links {
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 2px dashed rgba(255, 215, 0, 0.3); /* Dashed gold separator */
+}
+
+.auth-links p {
+    color: #E0D8C0; /* Soft cream text */
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.auth-links a {
+    display: block;
+    text-align: center;
+    color: #FFD700; /* Gold for login/logout links */
+    text-decoration: none;
+    padding: 12px;
+    border: 1px solid #FFD700; /* Gold border */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-links a:hover {
+    background-color: #FFD700; /* Gold background on hover */
+    color: #0A192F; /* Dark blue text on hover */
 }

@@ -8,6 +8,7 @@ from datetime import date
 from django.contrib.auth.views import LoginView
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Sum, Count
 
 class CustomLoginView(LoginView):
     template_name = 'production_tracker/login.html'
@@ -27,6 +28,32 @@ class CustomLoginView(LoginView):
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'production_tracker/dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Order Analytics
+        context['total_orders'] = Order.objects.count()
+        context['pending_orders'] = Order.objects.filter(status='Pending').count()
+        context['in_progress_orders'] = Order.objects.filter(status='In Progress').count()
+        context['completed_orders'] = Order.objects.filter(status='Completed').count()
+        context['recent_orders'] = Order.objects.order_by('-order_date')[:5]
+
+        # Vendor Analytics
+        context['total_vendors'] = Vendor.objects.count()
+
+        # Individual Analytics
+        context['total_individuals'] = Individual.objects.count()
+
+        # Invoice Analytics
+        context['total_invoice_amount'] = Invoice.objects.aggregate(Sum('amount'))['amount__sum'] or 0
+        context['paid_invoices'] = Invoice.objects.filter(paid=True).count()
+        context['unpaid_invoices'] = Invoice.objects.filter(paid=False).count()
+
+        # Order Stage Analytics
+        context['stages_in_progress'] = OrderStage.objects.filter(status='In Progress').count()
+
+        return context
 
 class OrderListView(LoginRequiredMixin, ListView):
     model = Order
