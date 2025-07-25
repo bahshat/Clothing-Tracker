@@ -1,5 +1,5 @@
 from django import forms
-from .models import OrderStage, Vendor, Order, Individual, Measurement
+from .models import OrderStage, Vendor, Order, Individual, Measurement, PipelineStage
 
 class OrderStageUpdateForm(forms.ModelForm):
     class Meta:
@@ -25,4 +25,12 @@ class MeasurementForm(forms.ModelForm):
         fields = ['individual', 'measurement_type', 'value', 'date_recorded']
         widgets = {
             'date_recorded': forms.DateInput(attrs={'type': 'date'})
+        }
+
+class OrderStageCreateForm(forms.ModelForm):
+    class Meta:
+        model = OrderStage
+        fields = ['stage', 'assigned_vendor', 'start_date', 'status']
+        widgets = {
+            'start_date': forms.DateInput(attrs={'type': 'date'})
         }

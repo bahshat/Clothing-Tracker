@@ -33,4 +33,11 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <h2>Add New Stage</h2>
+    <form action="{% url 'order_detail' order.pk %}" method="post">
+        {% csrf_token %}
+        {{ stage_create_form.as_p }}
+        <button type="submit">Add Stage</button>
+    </form>
 {% endblock %}

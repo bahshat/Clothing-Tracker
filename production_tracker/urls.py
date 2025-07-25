@@ -5,10 +5,14 @@ from .views import (
     IndividualListView, IndividualCreateView,
     MeasurementListView, MeasurementCreateView,
     VendorRoleListView, VendorListView,
-    PipelineStageListView, InvoiceListView
+    PipelineStageListView, InvoiceListView,
+    CustomLoginView
 )
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
+    path('login/', CustomLoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('', DashboardView.as_view(), name='dashboard'),
     path('orders/', OrderListView.as_view(), name='order_list'),
     path('orders/new/', OrderCreateView.as_view(), name='order_new'),
