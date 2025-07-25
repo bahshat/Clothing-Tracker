@@ -1,0 +1,10 @@
+{% extends 'production_tracker/base.html' %}
+
+{% block content %}
+    <h1>Orders</h1>
+    <ul>
+        {% for order in orders %}
+            <li><a href="{% url 'order_detail' order.pk %}">{{ order.order_number }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
