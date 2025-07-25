@@ -1,0 +1,18 @@
+{% extends 'production_tracker/base.html' %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <p>Welcome to your Clothing Production Tracker dashboard!</p>
+    <p>Here you can get an overview of your production process.</p>
+    
+    <h2>Quick Links</h2>
+    <ul>
+        <li><a href="{% url 'order_list' %}">View All Orders</a></li>
+        <li><a href="{% url 'individual_list' %}">Manage Individuals</a></li>
+        <li><a href="{% url 'vendor_list' %}">Manage Vendors</a></li>
+        <li><a href="{% url 'invoice_list' %}">View Invoices</a></li>
+    </ul>
+
+    {# You can add more dashboard widgets here, e.g., counts of pending orders, recent activities, etc. #}
+
+{% endblock %}

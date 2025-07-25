@@ -158,3 +158,22 @@ form textarea:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(38, 139, 210, 0.5);
 }
+
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.filter-buttons .button {
+    display: inline-block;
+    background-color: #268bd2; /* Bright blue */
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.filter-buttons .button:hover {
+    background-color: #2aa198; /* Teal */
+}

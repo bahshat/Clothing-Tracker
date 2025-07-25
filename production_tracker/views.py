@@ -1,14 +1,25 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView, CreateView
+from django.urls import reverse_lazy
 from .models import Order, OrderStage, Individual, Measurement, VendorRole, Vendor, PipelineStage, Invoice
-from .forms import OrderStageUpdateForm
+from .forms import OrderStageUpdateForm, OrderForm, IndividualForm, MeasurementForm
 from datetime import date
+
+class DashboardView(TemplateView):
+    template_name = 'production_tracker/dashboard.html'
 
 class OrderListView(ListView):
     model = Order
     template_name = 'production_tracker/order_list.html'
     context_object_name = 'orders'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        status = self.request.GET.get('status')
+        if status:
+            queryset = queryset.filter(status=status)
+        return queryset
 
 class OrderDetailView(DetailView):
     model = Order
@@ -72,3 +83,21 @@ class InvoiceListView(ListView):
     model = Invoice
     template_name = 'production_tracker/invoice_list.html'
     context_object_name = 'invoices'
+
+class OrderCreateView(CreateView):
+    model = Order
+    form_class = OrderForm
+    template_name = 'production_tracker/order_form.html'
+    success_url = reverse_lazy('order_list')
+
+class IndividualCreateView(CreateView):
+    model = Individual
+    form_class = IndividualForm
+    template_name = 'production_tracker/individual_form.html'
+    success_url = reverse_lazy('individual_list')
+
+class MeasurementCreateView(CreateView):
+    model = Measurement
+    form_class = MeasurementForm
+    template_name = 'production_tracker/measurement_form.html'
+    success_url = reverse_lazy('measurement_list')

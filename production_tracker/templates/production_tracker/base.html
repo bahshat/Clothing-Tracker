@@ -10,9 +10,13 @@
         <aside class="sidebar">
             <h2>Clothing Factory</h2>
             <ul>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
                 <li><a href="{% url 'order_list' %}">Orders</a></li>
+                <li><a href="{% url 'order_new' %}">New Order</a></li>
                 <li><a href="{% url 'individual_list' %}">Individuals</a></li>
+                <li><a href="{% url 'individual_new' %}">New Individual</a></li>
                 <li><a href="{% url 'measurement_list' %}">Measurements</a></li>
+                <li><a href="{% url 'measurement_new' %}">New Measurement</a></li>
                 <li><a href="{% url 'vendor_list' %}">Vendors</a></li>
                 <li><a href="{% url 'vendorrole_list' %}">Vendor Roles</a></li>
                 <li><a href="{% url 'pipelinestage_list' %}">Pipeline Stages</a></li>
