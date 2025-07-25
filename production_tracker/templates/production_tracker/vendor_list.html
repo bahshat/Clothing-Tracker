@@ -1,0 +1,21 @@
+{% extends 'production_tracker/base.html' %}
+
+{% block content %}
+    <h1>Vendors</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vendor in vendors %}
+                <tr>
+                    <td>{{ vendor.name }}</td>
+                    <td>{{ vendor.role.name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

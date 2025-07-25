@@ -1,0 +1,21 @@
+{% extends 'production_tracker/base.html' %}
+
+{% block content %}
+    <h1>Pipeline Stages</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stage in pipeline_stages %}
+                <tr>
+                    <td>{{ stage.name }}</td>
+                    <td>{{ stage.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
