@@ -5,19 +5,17 @@
     <table>
         <thead>
             <tr>
-                <th>Individual</th>
+                <th>Customer</th>
                 <th>Type</th>
                 <th>Value</th>
-                <th>Date Recorded</th>
             </tr>
         </thead>
         <tbody>
             {% for measurement in measurements %}
                 <tr>
-                    <td>{{ measurement.individual.name }}</td>
+                    <td>{{ measurement.customer.name }}</td>
                     <td>{{ measurement.measurement_type }}</td>
                     <td>{{ measurement.value }}</td>
-                    <td>{{ measurement.date_recorded }}</td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -1,10 +1,10 @@
 {% extends 'production_tracker/base.html' %}
 
 {% block content %}
-    <h1>Create New Individual</h1>
+    <h1>Create New Customer</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Create Individual</button>
+        <button type="submit">Create Customer</button>
     </form>
 {% endblock %}

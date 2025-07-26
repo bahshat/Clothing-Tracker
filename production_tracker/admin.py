@@ -1,20 +1,24 @@
 from django.contrib import admin
 from .models import (
-    Individual, Measurement, VendorRole, Vendor, PipelineStage, Order, OrderStage, Invoice
+    Customer, Measurement, VendorRole, Vendor, PipelineStage, Order, OrderStage, Invoice, Particulars
 )
 
 class OrderStageInline(admin.TabularInline):
     model = OrderStage
     extra = 1
 
+class ParticularsInline(admin.TabularInline):
+    model = Particulars
+    extra = 1
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('order_number', 'customer', 'order_date', 'status')
-    inlines = [OrderStageInline]
+    list_display = ('id', 'customer', 'order_placed_on', 'status')
+    inlines = [OrderStageInline, ParticularsInline]
 
-@admin.register(Individual)
-class IndividualAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone')
+@admin.register(Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'address')
 
 @admin.register(Vendor)
 class VendorAdmin(admin.ModelAdmin):
@@ -25,3 +29,4 @@ admin.site.register(VendorRole)
 admin.site.register(PipelineStage)
 admin.site.register(OrderStage)
 admin.site.register(Invoice)
+admin.site.register(Particulars)

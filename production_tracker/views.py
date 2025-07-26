@@ -2,8 +2,8 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views import View
 from django.views.generic import ListView, DetailView, TemplateView, CreateView
 from django.urls import reverse_lazy
-from .models import Order, OrderStage, Individual, Measurement, VendorRole, Vendor, PipelineStage, Invoice
-from .forms import OrderStageUpdateForm, OrderForm, IndividualForm, MeasurementForm, OrderStageCreateForm
+from .models import Order, OrderStage, Customer, Measurement, VendorRole, Vendor, PipelineStage, Invoice
+from .forms import OrderStageUpdateForm, OrderForm, CustomerForm, MeasurementForm, OrderStageCreateForm
 from datetime import date
 from django.contrib.auth.views import LoginView
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -37,16 +37,16 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context['pending_orders'] = Order.objects.filter(status='Pending').count()
         context['in_progress_orders'] = Order.objects.filter(status='In Progress').count()
         context['completed_orders'] = Order.objects.filter(status='Completed').count()
-        context['recent_orders'] = Order.objects.order_by('-order_date')[:5]
+        context['recent_orders'] = Order.objects.order_by('-order_placed_on')[:5]
 
         # Vendor Analytics
         context['total_vendors'] = Vendor.objects.count()
 
-        # Individual Analytics
-        context['total_individuals'] = Individual.objects.count()
+        # Customer Analytics
+        context['total_customers'] = Customer.objects.count()
 
         # Invoice Analytics
-        context['total_invoice_amount'] = Invoice.objects.aggregate(Sum('amount'))['amount__sum'] or 0
+        context['total_invoice_amount'] = Invoice.objects.aggregate(Sum('total_amount'))['total_amount__sum'] or 0
         context['paid_invoices'] = Invoice.objects.filter(paid=True).count()
         context['unpaid_invoices'] = Invoice.objects.filter(paid=False).count()
 
@@ -114,10 +114,10 @@ class UpdateOrderStageView(LoginRequiredMixin, View):
             updated_stage.save()
         return redirect('order_detail', pk=order_stage.order.pk)
 
-class IndividualListView(LoginRequiredMixin, ListView):
-    model = Individual
-    template_name = 'production_tracker/individual_list.html'
-    context_object_name = 'individuals'
+class CustomerListView(LoginRequiredMixin, ListView):
+    model = Customer
+    template_name = 'production_tracker/customer_list.html'
+    context_object_name = 'customers'
 
 class MeasurementListView(LoginRequiredMixin, ListView):
     model = Measurement
@@ -150,11 +150,11 @@ class OrderCreateView(LoginRequiredMixin, CreateView):
     template_name = 'production_tracker/order_form.html'
     success_url = reverse_lazy('order_list')
 
-class IndividualCreateView(LoginRequiredMixin, CreateView):
-    model = Individual
-    form_class = IndividualForm
-    template_name = 'production_tracker/individual_form.html'
-    success_url = reverse_lazy('individual_list')
+class CustomerCreateView(LoginRequiredMixin, CreateView):
+    model = Customer
+    form_class = CustomerForm
+    template_name = 'production_tracker/customer_form.html'
+    success_url = reverse_lazy('customer_list')
 
 class MeasurementCreateView(LoginRequiredMixin, CreateView):
     model = Measurement

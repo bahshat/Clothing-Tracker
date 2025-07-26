@@ -13,9 +13,9 @@
     <table>
         <thead>
             <tr>
-                <th>Order Number</th>
+                <th>Order ID</th>
                 <th>Customer</th>
-                <th>Order Date</th>
+                <th>Order Placed On</th>
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
@@ -23,9 +23,9 @@
         <tbody>
             {% for order in orders %}
                 <tr>
-                    <td>{{ order.order_number }}</td>
+                    <td>{{ order.id }}</td>
                     <td>{{ order.customer.name }}</td>
-                    <td>{{ order.order_date }}</td>
+                    <td>{{ order.order_placed_on }}</td>
                     <td>{{ order.status }}</td>
                     <td><a href="{% url 'order_detail' order.pk %}" class="button">View Details</a></td>
                 </tr>
